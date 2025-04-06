@@ -1,4 +1,4 @@
-def get_mask_card_number(card_number: int) -> str:
+def get_mask_card_number(card_number: str) -> str:
     """Маскирует номер банковской карты в формате 0000 00** **** 0000"""
 
     str_number = str(card_number)

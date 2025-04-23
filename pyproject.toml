@@ -32,6 +32,8 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "pytest (>=8.3.5,<9.0.0)",
+    "pytest-cov (>=6.1.1,<7.0.0)"
 ]
 
 
@@ -45,4 +47,9 @@ mypy = "^1.15.0"
 black = "^25.1.0"
 isort = "^6.0.1"
 
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+pytest-cov = "^6.1.1"
 

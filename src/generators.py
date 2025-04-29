@@ -3,7 +3,7 @@ from typing import Any, Generator, Iterable, Iterator, Optional
 
 def filter_by_currency(list_of_actions: Iterable[dict[str, Any]], code: Optional[str] = None) -> Iterator:
     """
-    Функция, которая ринимает на вход список словарей, представляющих транзакции и
+    Функция, которая принимает на вход список словарей, представляющих транзакции и
     возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной
     """
     if not list_of_actions:
@@ -19,7 +19,7 @@ def filter_by_currency(list_of_actions: Iterable[dict[str, Any]], code: Optional
 
 
 def transaction_descriptions(transactions: list[dict]) -> Generator[str]:
-    """Принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
+    """Генератор, который принимает список словарей с транзакциями и возвращает описание каждой операции по очереди"""
     if not transactions:
         raise ValueError("Передано пустое значение!")
 

@@ -1,5 +1,6 @@
 from typing import Any
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 def test_filter_by_currency(transaction_list: Any, usd_transaction: Any) -> Any:

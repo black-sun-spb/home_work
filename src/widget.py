@@ -24,18 +24,19 @@ def mask_account_card(card_or_account: str) -> str:
 
 def get_date(my_date: str) -> str:
     """Функция, которая меняет формат даты"""
-    date_formats = ["%Y-%m-%dT%H:%M:%S.%f",
-                    "%Y-%m-%dT%H:%M:%S",
-                    "%Y-%m-%dT%H:%M",
-                    "%Y-%m-%dT%H",
-                    "%Y-%m-%dT",
-                    "%Y-%m",
-                    "%Y",
-                    "%H:%M:%S.%f",
-                    "%M:%S.%f",
-                    "%S.%f",
-                    "%f"
-                    ]
+    date_formats = [
+        "%Y-%m-%dT%H:%M:%S.%f",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%dT%H:%M",
+        "%Y-%m-%dT%H",
+        "%Y-%m-%dT",
+        "%Y-%m",
+        "%Y",
+        "%H:%M:%S.%f",
+        "%M:%S.%f",
+        "%S.%f",
+        "%f",
+    ]
     for fmt in date_formats:
         try:
             date_obj = datetime.strptime(my_date, fmt)

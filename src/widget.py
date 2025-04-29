@@ -1,10 +1,7 @@
-from datetime import datetime
-
-from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_or_account: str) -> str:
-    """Функция, которая умеет обрабатывать информацию как о картах, так и о счетах"""
+    """Функция, которая обрабатывает информацию как о картах, так и о счетах"""
     card_or_account_list = card_or_account.split()
     if "Счет" in card_or_account_list:
         return f"Счет {get_mask_account(card_or_account_list[1])}"

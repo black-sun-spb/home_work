@@ -15,16 +15,14 @@ def test_function_error() -> Any:
 
 def test_log_success(capsys: Any) -> Any:
     test_function_success(1, 2)
-
     captured = capsys.readouterr()
     assert captured.out == "test_function_success ok\n"
 
 
 def test_log_error(capsys: Any) -> Any:
     test_function_error(1, 2)
-
     captured = capsys.readouterr()
-    assert "test_function_error error: ValueError. Inputs: (1, 2), {}\n" in captured.out
+    assert "test_function_error error: TypeError. Inputs: (1, 2), {}\n" in captured.out
 
 
 def test_log_to_file(tmpdir: Any) -> None:
@@ -49,5 +47,4 @@ def test_log_to_file(tmpdir: Any) -> None:
 
     with open(str(log_file), "r") as f:
         log_content = f.read()
-
-    assert "test_function_file_error error: ValueError. Inputs: (1, 2), {}" in log_content
+    assert "test_function_file_error error: TypeError. Inputs: (1, 2), {}" in log_content

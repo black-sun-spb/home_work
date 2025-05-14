@@ -1,8 +1,7 @@
+from typing import Any
 from unittest.mock import patch
 
 from src.external_api import convert_from_i_to_rub
-
-from typing import Any
 
 transaction = {
     "id": 41428829,

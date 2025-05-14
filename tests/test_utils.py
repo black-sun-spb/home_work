@@ -1,10 +1,9 @@
+from typing import Any
 from unittest.mock import patch
 
 import pytest
 
 from src.utils import get_transactions_dictionary
-
-from typing import Any
 
 
 @pytest.fixture

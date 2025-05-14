@@ -1,19 +1,33 @@
 import json
-from typing import Any, Dict, List
+import logging
+from json import JSONDecodeError
+
+logger = logging.getLogger("utils")
+file_handler = logging.FileHandler("logs/utils.log", "w", encoding="utf-8")
+file_formatter = logging.Formatter("%(asctime)s %(filename)s %(levelname)s: %(message)s")
+file_handler.setFormatter(file_formatter)
+logger.addHandler(file_handler)
+logger.setLevel(logging.DEBUG)
 
 
-def get_transactions_dictionary(file_path: str) -> List[Dict[str, Any]]:
-    """A function that loads transactions from a JSON file and returns them as a dictionary."""
-    # Path to the file with transactions
+def get_transactions_dictionary(path: str) -> list:
+    """Принимает путь до JSON-файла и возвращает список словарей с данными о финансовых транзакциях."""
     try:
-        # Opening the file and loading JSON data
-        with open(file_path, "r", encoding="utf-8") as operations:
-            transactions = list(json.load(operations))
-            if not isinstance(transactions, list):
-                raise ValueError(f"Expected a list, but got {type(transactions).__name__}")
-
-            return transactions  # Return the list of transactions
-
-    except (json.JSONDecodeError, FileNotFoundError, ValueError):
-        # In case of error, return an empty list
+        logger.info(f"Получаем данные из файла {path}")
+        with open(path, "r", encoding="utf-8") as operations:
+            try:
+                transactions = json.load(operations)
+            except JSONDecodeError:
+                logger.error(f"Ошибка чтения JSON-файла {path}")
+                return []
+        if not isinstance(transactions, list):
+            logger.critical("Список транзакций пуст")
+            return []
+        return transactions
+    except FileNotFoundError as ex:
+        logger.error(f"Данные не найдены: {ex}")
         return []
+
+
+transaction = get_transactions_dictionary("../data/operations.json")
+print(transaction)

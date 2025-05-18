@@ -4,7 +4,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_or_account: str) -> str:
-    """Функция, которая умеет обрабатывать информацию как о картах, так и о счетах"""
+    """Функция, которая обрабатывает информацию как о картах, так и о счетах"""
     card_or_account_list = card_or_account.split()
     if "Счет" in card_or_account_list:
         return f"Счет {get_mask_account(card_or_account_list[1])}"
@@ -24,18 +24,19 @@ def mask_account_card(card_or_account: str) -> str:
 
 def get_date(my_date: str) -> str:
     """Функция, которая меняет формат даты"""
-    date_formats = ["%Y-%m-%dT%H:%M:%S.%f",
-                    "%Y-%m-%dT%H:%M:%S",
-                    "%Y-%m-%dT%H:%M",
-                    "%Y-%m-%dT%H",
-                    "%Y-%m-%dT",
-                    "%Y-%m",
-                    "%Y",
-                    "%H:%M:%S.%f",
-                    "%M:%S.%f",
-                    "%S.%f",
-                    "%f"
-                    ]
+    date_formats = [
+        "%Y-%m-%dT%H:%M:%S.%f",
+        "%Y-%m-%dT%H:%M:%S",
+        "%Y-%m-%dT%H:%M",
+        "%Y-%m-%dT%H",
+        "%Y-%m-%dT",
+        "%Y-%m",
+        "%Y",
+        "%H:%M:%S.%f",
+        "%M:%S.%f",
+        "%S.%f",
+        "%f",
+    ]
     for fmt in date_formats:
         try:
             date_obj = datetime.strptime(my_date, fmt)

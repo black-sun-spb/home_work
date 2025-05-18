@@ -31,6 +31,7 @@ data/ - папка с файлами данных.
     Генератор transaction_descriptions принимает список словарей с транзакциями и возвращает описание каждой операции по очереди.
     Генератор card_number_generator возвращает номера банковских карт в формате XXXX XXXX XXXX XXXX.
     Декоратор Log, регистрирует детали выполнения функции.
+    Функции read_csv_file и read_excel_file позволяют открывать файлы формата Excel и CSV, возвращая список словарей с данными.
 
 ## Тестирование:
 
@@ -45,6 +46,7 @@ data/ - папка с файлами данных.
     • processing: функции filter_by_state и sort_by_date.
     • generators: функция filter_by_currency и генераторы transaction_descriptions и card_number_generator.
     • decorators: декоратор Log
+    • open_file.py позволяет открывать файлы формата Excel и CSV, возвращая список словарей с данными.
 
 Покрытие тестами составляет более 80% кода проекта.
 

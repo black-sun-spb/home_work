@@ -10,12 +10,25 @@ def read_csv_file(file_path: str) -> list[dict]:
         reader = csv.reader(file, delimiter=";")
         header = next(reader)
         for row in reader:
+            # Получаем значение amount как строку
+            amount_str = row[header.index("amount")]
+            # Проверяем, не пустая ли строка
+            if amount_str:
+                try:
+                    amount_value = float(amount_str)
+                except ValueError:
+                    # Если не удалось преобразовать, можно установить 0 или пропустить
+                    amount_value = 0.0
+            else:
+                # Если значение пустое, присваиваем 0 или другое значение по умолчанию
+                amount_value = 0.0
+
             row_dict = {
                 "id": row[header.index("id")],
                 "state": row[header.index("state")],
                 "date": row[header.index("date")],
                 "operationAmount": {
-                    "amount": float(row[header.index("amount")]),
+                    "amount": amount_value,
                     "currency": {
                         "name": row[header.index("currency_name")],
                         "code": row[header.index("currency_code")],

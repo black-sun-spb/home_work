@@ -18,8 +18,10 @@ def log(filename: Any = "") -> Any:
                 if filename:
                     with open(filename, "w") as file:
                         file.write(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}")
+                        return None
                 else:
                     print(f"{func.__name__} error: {e.__class__.__name__}. Inputs: {args}, {kwargs}")
+                    return None
 
         return wrapper
 

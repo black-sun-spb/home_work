@@ -1,10 +1,10 @@
+from typing import Any
 from unittest.mock import mock_open, patch
 
 import pandas as pd
 
 from src.open_file import read_csv_file, read_excel_file
 
-from typing import Any
 
 @patch("csv.reader")
 def test_read_csv_file(mock_csv_reader: Any) -> Any:
